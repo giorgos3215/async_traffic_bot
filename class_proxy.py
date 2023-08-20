@@ -15,23 +15,6 @@ class GetProxy:
     def get_proxy(self, http=None, socks4=None, socks5=None, unknown=None):
         """Path to proxy file(s)"""
         proxy_list = []
-        protocols = {}
-        if http != None:
-            protocols['http'] = http
-        if socks4 != None:
-            protocols['socks4'] = socks4
-        if socks5 != None:
-            protocols['socks5'] = socks5
-        if unknown != None:
-            protocols['unknown'] = unknown
-        for key, value in protocols.items():
-            with open(value) as file:
-                f = file.readlines()
-                for p in f:
-                    d = p.replace(' ', '').replace('\n', '')
-                    if key == 'unknown':
-                        for prtcl in ['http', 'socks4', 'socks5']:
-                            proxy_list.append(f"{prtcl}://{d}")
-                    else:
-                        proxy_list.append(f"{key}://{d}")
+        # Use the provided proxy
+        proxy_list.append("http://giorgos123-zone-resi:giorgos321@pr.pyproxy.com:16666")
         return proxy_list
